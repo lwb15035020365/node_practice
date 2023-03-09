@@ -2666,3 +2666,7 @@ sql [2023-03-09 17:50:42] [DEBUG]: Executing (default): ALTER TABLE `Books` CHAN
 
 sql [2023-03-09 17:50:42] [DEBUG]: Executing (default): SHOW INDEX FROM `Books`
 
+sql [2023-03-09 17:50:50] [DEBUG]: Executing (default): SELECT count(`Student`.`id`) AS `count` FROM `Students` AS `Student` LEFT OUTER JOIN `Classes` AS `Class` ON `Student`.`ClassId` = `Class`.`id` AND (`Class`.`deletedAt` IS NULL) WHERE `Student`.`deletedAt` IS NULL;
+
+sql [2023-03-09 17:50:50] [DEBUG]: Executing (default): SELECT `Student`.`id`, `Student`.`name`, `Student`.`sex`, `Student`.`birthday`, `Class`.`id` AS `Class.id`, `Class`.`name` AS `Class.name`, `Class`.`openDate` AS `Class.openDate`, `Class`.`deletedAt` AS `Class.deletedAt` FROM `Students` AS `Student` LEFT OUTER JOIN `Classes` AS `Class` ON `Student`.`ClassId` = `Class`.`id` AND (`Class`.`deletedAt` IS NULL) WHERE `Student`.`deletedAt` IS NULL LIMIT 0, 10;
+
