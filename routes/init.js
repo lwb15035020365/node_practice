@@ -1,19 +1,19 @@
 const express = require("express");
-const app = express(); //创建一个express应用
+const app = express();
+const path = require('path');
 
-// app.use(require("./staticMiddleware"));
+const staticRoot = path.resolve(__dirname, '../public');
 
-app.get("/news/abc", (req, res, next) => {
-  console.log("handler1");
-  // throw new Error("abc")
-  // 相当于 next(new Error("abc"))
-  next(new Error("abc"));
-  //   next();
-});
+app.use(express.static(staticRoot));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-//能匹配  /news  /news/abc   /news/123   /news/ab/adfs
-//不能匹配  /n   /a   /   /newsabc
-app.use("/news", require("./errorMiddleware"));
+app.use("/api/student", require('./api/student'));
+
+
+
+
+app.use(require("./errorMiddleware"));
 
 const port = 5008;
 app.listen(port, () => {
