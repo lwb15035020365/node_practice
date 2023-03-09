@@ -1,7 +1,7 @@
 const { Sequelize } = require('sequelize');
 const { sqlLogger } = require('../logger')
 
-const sequelize = new Sequelize('myschooldb', 'root', '123456', {
+const sequelize = new Sequelize('node_practice', 'root', '123456', {
   host: 'localhost',
   dialect: 'mysql',
   logging: (msg) => {
